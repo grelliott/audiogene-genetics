@@ -57,6 +57,8 @@ OSC::OSC(const std::string& clientPort, const std::string& serverIp, const std::
             });
 
     client.add_method("/request", "s", [this] (lo_arg **argv, int len) {
+            (void)argv;
+            (void)len;
         _logger->info("Request for new conductor");
         std::unique_lock<std::mutex> l(_nextMutex);
         _nextCV.notify_all();
