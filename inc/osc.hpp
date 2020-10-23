@@ -45,7 +45,7 @@ constexpr char DEFAULT_SERVER_PORT[] = "57120";
 //TODO make a config value
 constexpr uint8_t REQUEST_WAIT_FOR_S = 120;
 
-class OSC: public Musician {
+class OSC final: public Musician {
     std::shared_ptr<spdlog::logger> _logger;
     lo::ServerThread client;
     lo::Address scLangServer;
@@ -57,7 +57,7 @@ class OSC: public Musician {
  public:
     OSC();
     OSC(const std::string& clientPort, const std::string& serverIp, const std::string& serverPort);
-    ~OSC() final = default;
+    ~OSC() = default;
 
     auto requestConductor() -> bool final;
     void setConductor(const Individual& conductor) final;

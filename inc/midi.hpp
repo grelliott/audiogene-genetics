@@ -37,7 +37,7 @@ namespace audiogene {
 constexpr unsigned char NOTE_OFF = 0b10000000;
 constexpr unsigned char NOTE_ON = 0b10010000;
 
-class MIDI: public Audience {
+class MIDI final: public Audience {
     std::shared_ptr<spdlog::logger> _logger;
     const std::string& _name;
     // key => {attribute, direction}
@@ -48,7 +48,7 @@ class MIDI: public Audience {
     MIDI();
     // mapping is {"attribute": {"direction":"key"},...}
     MIDI(const std::string& name, const std::map<AttributeName, std::map<std::string, std::string>>& mapping);
-    ~MIDI() final = default;
+    ~MIDI() = default;
 
     auto prepare() -> bool final;
 };

@@ -35,13 +35,13 @@ constexpr int SPI_CHANNEL = 0;
 constexpr int MAX_SPEED = 500000;
 constexpr int BYTE_SIZE = 8;
 
-class SPI: public Audience {
+class SPI final: public Audience {
     std::shared_ptr<spdlog::logger> _logger;
     std::thread spiListenerThread;
 
  public:
     SPI();
-    ~SPI() final = default;
+    ~SPI() = default;
 
     auto prepare() -> bool final;
 };

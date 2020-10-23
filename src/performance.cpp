@@ -54,7 +54,7 @@ Performance::Performance(const YAML::Node& config):
 }
 
 void Performance::seatAudience() {
-    audiogene::Audience* audienceSource;
+    audiogene::Audience* audienceSource = nullptr;
 
     YAML::Node inputNode;
     try {
@@ -135,9 +135,9 @@ auto Performance::play() -> std::future<void> {
         audience->initializePreferences(attributes);
 
         // Generate potential Conductors
-        double mutationProbability;
-        size_t populationSize;
-        size_t topN;
+        double mutationProbability = NAN;
+        size_t populationSize = 0;
+        size_t topN = 0;
         try {
             mutationProbability = _config["mutationProb"].as<double>();
             populationSize = _config["populationSize"].as<int>();

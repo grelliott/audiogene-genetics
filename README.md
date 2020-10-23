@@ -12,6 +12,8 @@ Install the following dependencies:
 
 `sudo apt-get install libgflags-dev libyaml-cpp-dev libspdlog-dev liblo-dev librtmidi-dev wiringpi cmake`
 
+Also need to have clang-10 installed
+
 `mkdir _install && mkdir _build && cd _build`
 
 `cmake -DCMAKE_INSTALL_PREFIX=../_install ..`

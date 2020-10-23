@@ -51,7 +51,7 @@ class Audience {
     virtual auto prepare() -> bool = 0;
 
     void initializePreferences(const Attributes& attributes) {
-        for (const std::pair<AttributeName, Attribute>& p : attributes) {
+        for (const std::pair<AttributeName, Attribute> p : attributes) {
             _preferences.emplace(p.first, p.second);
         }
         _preferencesQueue->enqueue(_preferences);
@@ -77,7 +77,7 @@ class Audience {
         try {
             Preference p = _preferences.at(name);
             // here might be a good place to add backoff logic for excessive input from the audience
-            p.current = _math.clip(p.current + direction, p.min, p.max);
+            p.current = _math.clip(direction + p.current, p.min, p.max);
             preferenceUpdated(name, p);
         } catch (const std::out_of_range& e) {
             return;

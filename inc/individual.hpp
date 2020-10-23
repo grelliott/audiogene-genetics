@@ -52,7 +52,7 @@ class Individual {
     template<typename OStream>
     friend OStream &operator<<(OStream &os, const Individual &obj) {
         os << "Individual " << obj._id << std::endl;
-        for (const std::pair<AttributeName, Instruction> &i : obj._instructions) {
+        for (const std::pair<AttributeName, Instruction> i : obj._instructions) {
             os << "\t" << i.second << "\n";
         }
         return os;

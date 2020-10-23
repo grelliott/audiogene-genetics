@@ -72,13 +72,15 @@ auto Genetics::mutate(const Instructions& instructions) const noexcept -> Instru
 //
 // Implementation
 //
+// TODO(grant) look into C++20 Ranges
+// eg https://youtu.be/ImLFlLjSveM?t=2843
 Genetics::Impl::Impl(const double mutationProbability):
         _logger(spdlog::get("log")),
         _mutationProbability(mutationProbability) {
     // Empty constructor
 }
 
-// TODO Create individuals using an open-ended normal distribution with the median at the middle of the min/max
+// TODO(grant) Create individuals using an open-ended normal distribution with the median at the middle of the min/max
 auto Genetics::Impl::create(const Instructions& seed) -> Instructions {
     Instructions newInstructions;
     for (const auto& i : seed) {

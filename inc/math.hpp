@@ -20,9 +20,11 @@
  * THE SOFTWARE.
  */
 
+//TODO look at c++20 module
 #pragma once
 
 #include <chrono>
+//#include <concepts>
 #include <random>
 #include <type_traits>
 #include <utility>
@@ -31,6 +33,7 @@
 namespace audiogene {
 
 class Math {
+    // would be ideal to have this instantiated here and not need the callers to need a Math object
     mutable std::default_random_engine _rng;
 
  public:
@@ -48,6 +51,10 @@ class Math {
         return d(_rng) >= probability;
     }
 
+    // TODO(grant) look into C++20 concepts for some of these
+    // see https://youtu.be/ImLFlLjSveM?t=2350
+    // eg these could be changed to remove this templating boilerplate
+    // or adjusted to expand/constrain their accepted types
     template<
         typename T,
         typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
@@ -91,6 +98,10 @@ class Math {
         return d(_rng);
     }
 
+    // these could be comparable
+    // ie equality_comparable
+    // also may not need to define the vector, but instead maybe a container that has orderable elements
+    // maybe it should return a pair of Ts?
     template<
         typename T
     >
