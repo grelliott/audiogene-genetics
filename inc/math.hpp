@@ -24,7 +24,6 @@
 #pragma once
 
 #include <chrono>
-//#include <concepts>
 #include <random>
 #include <type_traits>
 #include <utility>
@@ -105,6 +104,7 @@ class Math {
     template<
         typename T
     >
+    //requires std::equality_comparable<T>
     std::pair<int, int> uniquePair(const std::vector<T>& container) const {
         std::uniform_int_distribution<int> choose(0, std::distance(container.begin(), container.end() - 1));
         int first = choose(_rng);

@@ -1,5 +1,6 @@
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_COMPILER "/usr/local/bin/clang++")
+set(CMAKE_CXX_COMPILER "/usr/local/bin/clang")
+set(CMAKE_CXX_FLAGS "-std=c++20")
 set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=*,-fuchsia-default-arguments-calls,-fuchsia-trailing-return")
 add_executable(audiogene osc.cpp spi.cpp midi.cpp instruction.cpp individual.cpp genetics.cpp population.cpp performance.cpp main.cpp)
 target_compile_options(audiogene PUBLIC -Wall -Wextra -Wpedantic -Werror)
